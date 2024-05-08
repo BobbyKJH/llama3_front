@@ -4,6 +4,10 @@ import type { Metadata } from "next";
 import { Llama } from "@/utils/type";
 /** Style */
 import "@/app/globals.css";
+/** Component */
+import Footer from "@/components/Footer";
+/** Provider */
+import QueryProvider from "@/provider/QueryProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,7 +17,13 @@ export const metadata: Metadata = {
 const RootLayout: React.FC<Llama.Layout> = ({ children }) => {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <QueryProvider>
+          <main className="border border-black min-h-[calc(100vh-4rem)]">{children}</main>
+
+          <Footer />
+        </QueryProvider>
+      </body>
     </html>
   );
 };
